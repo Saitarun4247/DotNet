@@ -1,0 +1,128 @@
+<html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 350px;
+            margin: 80px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h3, p {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0 15px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .btn-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .add { background-color: green; }
+        .sub { background-color: rgb(0, 191, 255); }
+        .mul { background-color: orange; }
+        .div { background-color: red; }
+
+        #resultBox {
+            margin-top: 15px;
+            padding: 12px;
+            background: #e9ecef;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="card">
+        <h3>Index - Simple Calculator</h3>
+        <p>Trainer Name: Pankaj Ramesh Patil</p>
+
+        <label>First Number</label>
+        <input type="number" id="num1" value="45">
+
+        <label>Second Number</label>
+        <input type="number" id="num2" value="12">
+
+        <div class="btn-container">
+            <button class="add" onclick="add()">Add</button>
+            <button class="sub" onclick="subtract()">Subtract</button>
+            <button class="mul" onclick="multiply()">Multiply</button>
+            <button class="div" onclick="divide()">Division</button>
+        </div>
+
+        <div id="resultBox">
+            Calculated Result
+        </div>
+    </div>
+</div>
+
+<script>
+    function getValues() {
+        let a = parseFloat(document.getElementById("num1").value);
+        let b = parseFloat(document.getElementById("num2").value);
+        return { a, b };
+    }
+
+    function add() {
+        let { a, b } = getValues();
+        document.getElementById("resultBox").innerHTML = `${a} + ${b} = ${a + b}`;
+    }
+
+    function subtract() {
+        let { a, b } = getValues();
+        document.getElementById("resultBox").innerHTML = `${a} - ${b} = ${a - b}`;
+    }
+
+    function multiply() {
+        let { a, b } = getValues();
+        document.getElementById("resultBox").innerHTML = `${a} × ${b} = ${a * b}`;
+    }
+
+    function divide() {
+        let { a, b } = getValues();
+
+        if (b === 0) {
+            document.getElementById("resultBox").innerHTML = "Cannot divide by zero";
+            return;
+        }
+
+        document.getElementById("resultBox").innerHTML = `${a} ÷ ${b} = ${a / b}`;
+    }
+</script>
+
+</body>
+</html>
